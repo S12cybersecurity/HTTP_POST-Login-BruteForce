@@ -63,9 +63,11 @@ def load_words(WORDLIST_FILENAME):
 }
                 resp = requests.post(args.url,data=pp,proxies=False,headers=headers)
                 polla = len(resp.content)
+                polla = int(polla)
                 bbb = resp.status_code
                 arr = len(resp.content)
                 aaaas = len(resp.content)
+                args.hl = int(args.hl)
                 if args.hl == None:
                   if args.hl == aaaas:
                     pass
@@ -78,10 +80,12 @@ def load_words(WORDLIST_FILENAME):
                     else:
                       a + 1
                 else:
-                  if len(uuuuuu.content) == polla:
+                  if args.hl == polla:
                     pass
                   else:
-                    print(f"{bcolors.OK}[+] Password:{bcolors.RESET}",final_str,"= Content Lenght:",polla)
+                    print(f"{bcolors.OK}[+] Password:{bcolors.RESET}",final_str)
+
+
 
                   
 wordlist = load_words(args.wordlist)
