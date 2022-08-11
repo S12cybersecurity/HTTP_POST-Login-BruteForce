@@ -17,7 +17,7 @@ python3 brute_force.py -h
 
 python3 brute_force.py --url http://127.0.0.1/api/v2/login -user administrator --wordlist /usr/share/wordlists/rockyou.txt
 
-**Costuming User and Password Fields**
+**Custuming User and Password Fields**
 ![image](https://user-images.githubusercontent.com/79543461/174681001-96112bef-ec59-4c22-8ec3-d667f66a5d30.png)
 
 
